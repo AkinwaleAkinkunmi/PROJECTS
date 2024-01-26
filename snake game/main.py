@@ -24,38 +24,35 @@ screen.onkey(fun=snake.move_left, key="Left")
 screen.onkey(fun=snake.move_right, key="Right", )
 
 # Task 3 - Moving the snake
-snaking = True
-appearance = 0
 
-while snaking:
-    screen.update()
-    time.sleep(0.1)
-    snake.move()
+screen.update()
+time.sleep(0.1)
+snake.move()
 
     # Create food and detect snake collision with food
 
-    if snake.head.distance(food) < 15:
-            food.refresh()
-            scoreboard.track_score()
-            snake.grow_snake()
-            appearance += 1
+if snake.head.distance(food) < 15:
+    food.refresh()
+    scoreboard.track_score()
+    snake.grow_snake()
 
 
-    # Detect collision with wall
-    if (
-        snake.head.xcor() > 280
-        or snake.head.xcor() < -280
-        or snake.head.ycor() > 280
-        or snake.head.ycor() < -280
-    ):
-        scoreboard.reset_scoreboard()
-        snake.reset()
+
+# Detect collision with wall
+if (
+    snake.head.xcor() > 280
+    or snake.head.xcor() < -280
+    or snake.head.ycor() > 280
+    or snake.head.ycor() < -280
+):
+    scoreboard.reset_scoreboard()
+    snake.reset_snake()
+    
+
+# Detect collision with body
+for segment in snake.segments[1:]:  # List slicing
+    if snake.head.distance(segment) < 10:
+            scoreboard.reset_scoreboard()
+            snake.reset_snake()
         
-
-    # Detect collision with body
-    for segment in snake.segments[1:]:  # List slicing
-        if snake.head.distance(segment) < 10:
-             scoreboard.reset_scoreboard()
-             snake.reset_snake()
-            
 screen.exitonclick()
