@@ -49,11 +49,13 @@ while snaking:
         or snake.head.ycor() < -280
     ):
         scoreboard.reset_scoreboard()
+        snake.reset()
         
 
     # Detect collision with body
     for segment in snake.segments[1:]:  # List slicing
         if snake.head.distance(segment) < 10:
              scoreboard.reset_scoreboard()
+             snake.reset_snake()
             
 screen.exitonclick()

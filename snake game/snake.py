@@ -24,7 +24,11 @@ class Snake:
         new_segment.penup()
         new_segment.goto(position)
         self.segments.append(new_segment)
-    
+
+    def reset_snake(self):
+        self.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def grow_snake(self):
         self.add_segment(self.segments[-1].position()) #From the end of the list
