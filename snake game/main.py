@@ -1,6 +1,6 @@
 import turtle as t
 from snake import Snake
-from food import Food, BonusFood
+from food import Food
 from scoreboard import ScoreBoard
 import time
 
@@ -48,13 +48,12 @@ while snaking:
         or snake.head.ycor() > 280
         or snake.head.ycor() < -280
     ):
-        snaking = False
-        scoreboard.game_over()
+        scoreboard.reset_scoreboard()
+        
 
     # Detect collision with body
     for segment in snake.segments[1:]:  # List slicing
         if snake.head.distance(segment) < 10:
-            snaking = False
-            scoreboard.game_over()
-
+             scoreboard.reset_scoreboard()
+            
 screen.exitonclick()
