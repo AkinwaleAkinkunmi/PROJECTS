@@ -27,6 +27,13 @@ while len(guessed_states) < 50:
     answer_states_title = answer_states.title()
 
     if answer_states_title == "Exit":
+        missing_states = []
+        for state in guessed_states:
+            if state not in states_list:
+                missing_states.append(missing_states)
+                
+        states_to_learn = pd.DataFrame(missing_states)
+        states_to_learn.to_csv("States To Learn.csv")
         break
 
     if answer_states_title in states_list:
@@ -39,6 +46,5 @@ while len(guessed_states) < 50:
         t.goto(int(state_row['x'].iloc[0]), int(state_row['y'].iloc[0])) # Gets the item in the x and y column   
         # You can also use the item() method in the above code. 
         t.write(answer_states)
-
 
 
