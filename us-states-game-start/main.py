@@ -15,20 +15,24 @@ turtle.shape(image)
 # t.onscreenclick(get_mouse_click_coor)
 # t.mainloop()
 
-playing = True
 
 answer_states = screen.textinput(title=f"Guess a state", prompt= "What's another state name")
 answer_states_title = answer_states.title()
 states_data = pd.read_csv("50_states.csv")
 states_list = states_data["state"].to_list()
+guseesd_states = []
 
-if answer_states_title in states_list:
-    t = turtle.Turtle()
-    t.hideturtle()
-    t.penup()
-    state_row = states_data[states_data.state == answer_states]
-    # t.goto(int(state_row.x), int(state_row.y))
-    t.goto(int(state_row['x'].iloc[0]), int(state_row['y'].iloc[0])) # Gets the item in the x and y column    
-    t.write(answer_states)
+
+
+while len(guseesd_states) < 50:
+    if answer_states_title in states_list:
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.penup()
+        state_row = states_data[states_data.state == answer_states_title]
+        # t.goto(int(state_row.x), int(state_row.y))
+        t.goto(int(state_row['x'].iloc[0]), int(state_row['y'].iloc[0])) # Gets the item in the x and y column   
+        # You can also use the item() method in the above code. 
+        t.write(answer_states)
 
 screen.exitonclick()
