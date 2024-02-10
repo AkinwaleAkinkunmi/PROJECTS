@@ -23,7 +23,10 @@ while playing:
     states_data = pd.read_csv("50_states.csv")
     states_list = states_data["state"].to_list()
     
-    for state in states_list:
-        if answer_states_title == state:
-            
+    if answer_states_title in states_list:
+        t = t.Turtle()
+        t.hideturtle()
+        t.penup()
+        states_data[states_data.state == answer_states]
+
 
