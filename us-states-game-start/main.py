@@ -16,8 +16,6 @@ turtle.shape(image)
 # t.mainloop()
 
 
-answer_states = screen.textinput(title=f"{len(guessed_states)}/50 states guessed", prompt= "What's another state name")
-answer_states_title = answer_states.title()
 states_data = pd.read_csv("50_states.csv")
 states_list = states_data["state"].to_list()
 guessed_states = []
@@ -25,6 +23,12 @@ guessed_states = []
 
 
 while len(guessed_states) < 50:
+    answer_states = screen.textinput(title=f"{len(guessed_states)}/50 States Guessed", prompt= "What's another state name")
+    answer_states_title = answer_states.title()
+
+    if answer_states_title == "Exit":
+        break
+
     if answer_states_title in states_list:
         guessed_states.append(answer_states_title)
         t = turtle.Turtle()
@@ -37,4 +41,4 @@ while len(guessed_states) < 50:
         t.write(answer_states)
 
 
-screen.exitonclick()
+
