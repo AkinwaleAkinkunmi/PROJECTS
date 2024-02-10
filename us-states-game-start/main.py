@@ -16,16 +16,17 @@ turtle.shape(image)
 # t.mainloop()
 
 
-answer_states = screen.textinput(title=f"Guess a state", prompt= "What's another state name")
+answer_states = screen.textinput(title=f"{len(guessed_states)}/50 states guessed", prompt= "What's another state name")
 answer_states_title = answer_states.title()
 states_data = pd.read_csv("50_states.csv")
 states_list = states_data["state"].to_list()
-guseesd_states = []
+guessed_states = []
 
 
 
-while len(guseesd_states) < 50:
+while len(guessed_states) < 50:
     if answer_states_title in states_list:
+        guessed_states.append(answer_states_title)
         t = turtle.Turtle()
         t.hideturtle()
         t.penup()
@@ -34,5 +35,6 @@ while len(guseesd_states) < 50:
         t.goto(int(state_row['x'].iloc[0]), int(state_row['y'].iloc[0])) # Gets the item in the x and y column   
         # You can also use the item() method in the above code. 
         t.write(answer_states)
+
 
 screen.exitonclick()
