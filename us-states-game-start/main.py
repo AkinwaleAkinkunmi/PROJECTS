@@ -27,10 +27,10 @@ while len(guessed_states) < 50:
     answer_states_title = answer_states.title()
 
     if answer_states_title == "Exit":
-        missing_states = []
-        for state in guessed_states:
-            if state not in states_list:
-                missing_states.append(missing_states)
+        missing_states = [state for state in states_list if state not in guessed_states]
+        # for state in guessed_states:
+        #     if state not in states_list:
+        #         missing_states.append(missing_states)
                 
         states_to_learn = pd.DataFrame(missing_states)
         states_to_learn.to_csv("States To Learn.csv")
